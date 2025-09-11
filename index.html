@@ -133,6 +133,12 @@
 
         // (A) 再生ボタンがクリックされたら広告を再生
         playButton.addEventListener('click', () => {
+            // ★★★ 変更点：ここから ★★★
+            // Safari対策：最初のクリックイベント内で、再生したいすべての動画を操作する
+            // これにより、両方の動画に対する再生許可をユーザーから得たことになる
+            mainVideo.play();
+            mainVideo.pause();
+            // ★★★ 変更点：ここまで ★★★
             adVideo.play().then(() => {
                 playButton.style.display = 'none';
             }).catch(error => {
@@ -180,4 +186,5 @@
     </script>
 
 </body>
+
 </html>
